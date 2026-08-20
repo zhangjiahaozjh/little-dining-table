@@ -1,0 +1,40 @@
+<view class="page-shell">
+  <view class="hero">
+    <view class="eyebrow">TODAY'S LITTLE FEAST</view>
+    <view class="hero-title">今天吃什么呀？</view>
+    <view class="hero-copy">挑几样喜欢的，悄悄告诉 TA。</view>
+    <view class="wish-link" bindtap="openWish">看看我们的饭饭心愿 <text>→</text></view>
+    <text class="hero-emoji">🍽️</text>
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x="true" show-scrollbar="false">
+    <view class="category-row">
+      <view wx:for="{{categories}}" wx:key="*this" class="category {{activeCategory === item ? 'category-active' : ''}}" data-category="{{item}}" bindtap="chooseCategory">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="dish-grid">
+    <view wx:for="{{visibleMenu}}" wx:key="id" class="dish-card">
+      <view class="dish-art {{item.color}}">
+        <image wx:if="{{item.sprite}}" class="dish-sprite" src="{{item.sprite}}" mode="scaleToFill" style="left: {{item.spriteLeft}}; top: {{item.spriteTop}};"></image>
+        <text wx:else>{{item.emoji}}</text>
+        <view class="dish-emoji-badge">{{item.emoji}}</view>
+      </view>
+      <view class="dish-info">
+        <view class="dish-name">{{item.name}}</view>
+        <view class="dish-note">{{item.note}}</view>
+        <view class="stepper">
+          <view class="stepper-button {{!quantities[item.id] ? 'disabled' : ''}}" data-id="{{item.id}}" data-delta="-1" bindtap="changeQuantity">−</view>
+          <text class="stepper-number">{{quantities[item.id] || 0}}</text>
+          <view class="stepper-button plus" data-id="{{item.id}}" data-delta="1" bindtap="changeQuantity">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="footer-space"></view>
+<view class="bottom-bar">
+  <view class="chosen-count"><text>{{totalCount}}</text> 样小心愿</view>
+  <button class="tell-button" bindtap="tellTa">把我的心愿放上去</button>
+</view>

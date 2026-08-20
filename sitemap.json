@@ -1,0 +1,4 @@
+{
+  "desc": "两个人的小饭桌页面配置",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

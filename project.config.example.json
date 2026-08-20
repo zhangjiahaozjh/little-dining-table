@@ -1,0 +1,38 @@
+{
+  "description": "两个人的小饭桌",
+  "compileType": "miniprogram",
+  "libVersion": "3.4.3",
+  "appid": "touristappid",
+  "projectname": "little-dining-table",
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "file",
+        "value": "assets/menu/savory-a.png"
+      },
+      {
+        "type": "file",
+        "value": "assets/menu/savory-b.png"
+      },
+      {
+        "type": "file",
+        "value": "assets/menu/staple-c.png"
+      },
+      {
+        "type": "file",
+        "value": "assets/menu/sweet-d.png"
+      }
+    ],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "minifyWXML": true
+  }
+}

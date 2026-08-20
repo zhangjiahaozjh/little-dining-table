@@ -1,0 +1,42 @@
+<view class="page-shell">
+  <view class="wish-hero">
+    <text class="wish-emoji">💞</text>
+    <view class="hero-title">我们的饭饭心愿</view>
+    <view class="hero-copy">你想吃的、TA 想吃的，都认真放在这里。</view>
+  </view>
+
+  <view wx:for="{{cards}}" wx:for-item="card" wx:key="label" class="wish-paper {{card.isMine ? 'mine-paper' : 'partner-paper'}}">
+    <view class="paper-head">
+      <view>
+        <view class="owner-label">{{card.label}}</view>
+        <view class="status-line"><text>{{card.display.emoji}}</text> {{card.display.text}}</view>
+      </view>
+      <text>{{card.items.length}} 样</text>
+    </view>
+
+    <block wx:if="{{card.items.length}}">
+      <view wx:for="{{card.items}}" wx:for-item="dish" wx:key="id" class="wish-item">
+        <view class="wish-icon {{dish.color}}">
+          <image wx:if="{{dish.sprite}}" class="wish-sprite" src="{{dish.sprite}}" mode="scaleToFill" style="left: {{dish.spriteLeft}}; top: {{dish.spriteTop}};"></image>
+          <text wx:else>{{dish.emoji}}</text>
+        </view>
+        <view class="wish-name">{{dish.name}}</view>
+        <view class="wish-note">{{dish.note}}</view>
+        <view class="wish-quantity">× {{dish.quantity}}</view>
+      </view>
+      <view class="paper-footer">{{card.footer}}</view>
+
+      <view class="card-actions" wx:if="{{!card.isMine}}">
+        <button wx:if="{{card.status === 'sent'}}" class="primary" data-wish-id="{{card.wishId}}" data-status="received" bindtap="updateStatus">收到啦</button>
+        <button wx:if="{{card.status === 'received'}}" class="primary" data-wish-id="{{card.wishId}}" data-status="ready" bindtap="updateStatus">可以开饭啦</button>
+        <view wx:if="{{card.status === 'ready'}}" class="ready-note">今天一起好好吃饭 ✨</view>
+      </view>
+    </block>
+
+    <view wx:else class="empty-inside">
+      <text>{{card.isMine ? '🍳' : '💭'}}</text>
+      <view>{{card.emptyCopy}}</view>
+      <button wx:if="{{card.isMine}}" class="soft mini-button" bindtap="chooseMine">去挑菜</button>
+    </view>
+  </view>
+</view>

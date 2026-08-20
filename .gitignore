@@ -1,0 +1,5 @@
+project.private.config.json
+project.config.json
+config.js
+.DS_Store
+npm-debug.log*

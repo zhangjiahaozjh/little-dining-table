@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/menu/index",
+    "pages/wish/index"
+  ],
+  "cloud": true,
+  "window": {
+    "navigationBarTitleText": "两个人的小饭桌",
+    "navigationBarBackgroundColor": "#FFF8F1",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFF8F1",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
